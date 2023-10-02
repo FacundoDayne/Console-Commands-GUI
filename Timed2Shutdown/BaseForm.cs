@@ -42,9 +42,14 @@ namespace Timed2Shutdown
                 case 1:
                     currentCommand = "shutdown";
                     btnEngage.Enabled = true;
-                    break;                    
-                //ipconfig
+                    break;
+
                 case 2:
+                    currentCommand = "abort";
+                    btnEngage.Enabled = true;
+                    break;
+                //ipconfig
+                case 3:
                     currentCommand = "ipconfig";
                     input = "ipconfig";
                     btnEngage.Enabled = true;
@@ -72,6 +77,10 @@ namespace Timed2Shutdown
                 {
                     input = "echo command cancelled";
                 }
+            }
+            else if (currentCommand == "abort")
+            {
+                input = "shutdown -a";
             }
             else if (currentCommand == "ipconfig")
             {

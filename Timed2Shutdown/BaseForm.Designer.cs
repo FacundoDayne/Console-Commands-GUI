@@ -72,6 +72,7 @@ namespace Timed2Shutdown
             this.cbCommand.Items.AddRange(new object[] {
             "Home",
             "Shutdown",
+            "Abort Shutdown",
             "Ipconfig"});
             this.cbCommand.Location = new System.Drawing.Point(150, 57);
             this.cbCommand.Name = "cbCommand";
@@ -106,7 +107,7 @@ namespace Timed2Shutdown
             this.pnlHome.Size = new System.Drawing.Size(624, 46);
             this.pnlHome.TabIndex = 7;
             // 
-            // TimedShutdownForm
+            // BaseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -122,7 +123,7 @@ namespace Timed2Shutdown
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(5);
             this.MaximizeBox = false;
-            this.Name = "TimedShutdownForm";
+            this.Name = "BaseForm";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnlHome.ResumeLayout(false);
             this.ResumeLayout(false);
