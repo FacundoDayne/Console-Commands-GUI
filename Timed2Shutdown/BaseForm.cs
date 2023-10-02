@@ -13,7 +13,7 @@ namespace Timed2Shutdown
     public partial class BaseForm : Form 
     {
         string input = "a";
-        bool shutdown = false;
+        string currentCommand = "a";
         string time = "";
         public BaseForm()
         {
@@ -40,11 +40,12 @@ namespace Timed2Shutdown
                     break;
                 //shutdown
                 case 1:
-                    shutdown = true;
+                    currentCommand = "shutdown";
                     btnEngage.Enabled = true;
                     break;                    
                 //ipconfig
                 case 2:
+                    currentCommand = "ipconfig";
                     input = "ipconfig";
                     btnEngage.Enabled = true;
                     break;
@@ -58,20 +59,27 @@ namespace Timed2Shutdown
 
         private void engageCMDCommand()
         {
-            if (shutdown)
+            if (currentCommand == "shutdown")
             {
                 ShutdownForm shutdownForm = new ShutdownForm();
                 if (shutdownForm.ShowDialog() == DialogResult.OK)
                 {
                     time = shutdownForm.time;
-                    input = $"shutdown /s /t {time} /c \"Shutdown Authormized by obamba\"";
+                    input = $"shutdown /s /t {time} /c \"Shutdown Authorized by obamba\"";
                     shutdownForm.Dispose();
                 }
                 else
                 {
-                    input = "";
+                    input = "echo command cancelled";
                 }
-                shutdown = false;
+            }
+            else if (currentCommand == "ipconfig")
+            {
+                input = "ipconfig";
+            }
+            else
+            {
+                input = "echo command cancelled";
             }
             Process process = new Process();
             process.StartInfo.FileName = "cmd.exe";
